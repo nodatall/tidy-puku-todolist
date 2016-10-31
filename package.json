@@ -1,0 +1,33 @@
+{
+  "name": "tidy-puku-todolist",
+  "version": "1.0.0",
+  "description": "Minimal to do list",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/nodatall/tidy-puku-todolist",
+    "type": "git"
+  },
+  "author": "Sylvan Swierkosz, Jason Emberley",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pg": "^6.1.0",
+    "pg-promise": "^5.3.5",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "express-generator": "^4.14.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^1.13.3"
+  },
+  "scripts": {
+    "clean":"rm -rf dist && mkdir dist",
+    "start": "nodemon server.js",
+    "webpack": "webpack --progress --colors --watch",
+    "buildwatch": "yarn run clean && yarn run webpack && yarn run start"
+  },
+}

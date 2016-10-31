@@ -2,7 +2,7 @@
 
 ### Specifications
 
-- [ ] Create design mockup using Figma
+- [X] Create design mockup using Figma
 - [ ] Learn how to setup and use React
 - [ ] Deepen understanding of Express
 - [ ] Postgres database
@@ -14,7 +14,19 @@ As a user, I can manipulate tasks in the following ways:
 - [ ] Delete
 - [ ] Check off as complete
 
-#### Stretch goal
+#### Stretch goals
 - [ ] Rearrange tasks by dragging
 - [ ] Deploy to Heroku
-- [ ] 
+
+#### Design mockup
+![Design mockup](./design/todoMockup.png)
+
+#### Routes
+| Path            | Method | Action             |
+| --------------- | ------ | ------------------ |
+| /               | get    | getAll()           |
+| /add            | post   | add()              |
+| /complete/:id   | put    | markAsComplete()   |
+| /uncomplete/:id | put    | markAsUncomplete() |
+| /edit/:id       | put    | edit()             |
+| /delete/:id     | delete | remove()           |

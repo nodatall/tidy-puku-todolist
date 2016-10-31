@@ -10,6 +10,7 @@
   "author": "Sylvan Swierkosz, Jason Emberley",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "pg": "^6.1.0",
     "pg-promise": "^5.3.5",
@@ -20,14 +21,13 @@
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
-    "express-generator": "^4.14.0",
     "nodemon": "^1.11.0",
     "webpack": "^1.13.3"
   },
   "scripts": {
-    "clean":"rm -rf dist && mkdir dist",
+    "clean": "rm -rf dist && mkdir dist",
     "start": "nodemon server.js",
     "webpack": "webpack --progress --colors --watch",
     "buildwatch": "yarn run clean && yarn run webpack && yarn run start"
-  },
+  }
 }

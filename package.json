@@ -26,7 +26,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
-    "start": "nodemon server.js",
+    "start": "nodemon src/server.js",
     "webpack": "webpack --progress --colors --watch",
     "buildwatch": "yarn run clean && yarn run webpack && yarn run start"
   }

@@ -8,3 +8,8 @@
 .primary-text-color    { color: #212121; }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
+
+.background       { background: #F2F2F2; }
+.border           { background: #607D8B; }
+.checkmark        { background: #009688; }
+.text-color       { color: #212121; }

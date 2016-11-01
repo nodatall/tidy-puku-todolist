@@ -2,19 +2,23 @@ const path = require('path')
 
 const db = require('../dataServices/db.js')
 
+const renderApp = (req, res) => {
+  res.sendFile(path.resolve(__dirname + '/../public/index.html'))
+}
+
 const getAll = (req, res) => {
   db.getAll()
-    .then( () => {
-      res.sendFile(path.resolve(__dirname + '/../public/index.html'))
+    .then( tasks => {
+      res.json(tasks)
     })
 }
 
 const add = (req, res) => {
-  db.add(req.body.text)
-    .then(task => {
-      res.status(200).json(task) // cbtt
-    })
-    .catch(next) // cbtt
+  db.add()
+    // .then(task => {
+    //   res.status(200).json(task) // cbtt
+    // })
+    // .catch(next) // cbtt
 }
 
 const markAsComplete = (req, res) => {
@@ -38,6 +42,7 @@ const reorder = (req, res) => {
 }
 
 module.exports = {
+  renderApp,
   getAll,
   add,
   markAsComplete,

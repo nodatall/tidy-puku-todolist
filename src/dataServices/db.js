@@ -7,12 +7,12 @@ const getAll = () => {
   return db.any(sql)
 }
 
-const add = (text) => {
+const add = () => {
   const sql = `
     INSERT INTO tasks (text)
     VALUES ($1)
   `
-  return db.none(sql, [text])
+  return db.none(sql, ['default'])
 }
 
 const markAsComplete = (id) => {

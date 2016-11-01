@@ -1,8 +1,47 @@
 import React from 'react'
+import TaskList from './TaskList.jsx'
+import $ from 'jquery'
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      tasks: null,
+    }
+    this.loadTasks()
+  }
+
+  loadTasks() {
+    $.ajax({
+      method: 'GET',
+      url: '/getAll',
+      contentType: 'application/json',
+      dataType: 'json',
+    }).then(tasks => {
+      this.setState({tasks: tasks})
+    })
+  }
+
+  addTask() {
+    $.ajax({
+      method: 'POST',
+      url: '/add',
+    })
+    this.loadTasks()
+  }
+
   render() {
-    return (<h1>Hello, world!</h1>)
+    const taskList = this.state.tasks === null ?
+      <div>Click + to add a task</div> :
+      <TaskList tasks={this.state.tasks} />
+
+    return (
+      <div className='container'>
+        <div className='add' onClick={this.addTask.bind(this)}>+</div>
+        {taskList}
+      </div>
+    )
   }
 }
 

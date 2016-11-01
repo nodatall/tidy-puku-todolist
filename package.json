@@ -29,7 +29,7 @@
     "clean": "rm -rf dist && mkdir dist",
     "start": "nodemon src/server.js",
     "webpack": "webpack --progress --colors --watch",
-    "buildwatch": "yarn run clean && yarn run webpack && yarn run start",
+    "buildwatch": "yarn run clean && yarn run webpack & yarn run start",
     "initialize": "createdb taskDatabase & node src/dataServices/initialize.js"
   }
 }

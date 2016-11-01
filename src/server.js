@@ -6,7 +6,8 @@ const app = express()
 
 app.use(bodyParser.json())
 
-app.use(express.static('public'))
+app.use(express.static('src/public'))
+app.use(express.static('dist'))
 
 app.use(routes)
 

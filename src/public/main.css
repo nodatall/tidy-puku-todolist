@@ -1,11 +1,58 @@
 body {
   background-color: #F2F2F2;
+  width: 100%;
 }
 
 .container {
-  width: 320px;
-  height: 600px;
+  width: 90%;
+  max-width: 400px;
+  min-height: 500px;
   border: 2px solid #607D8B;
   background-color: #FFFFFF;
   margin: 0 auto;
+}
+
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+}
+
+.taskText {
+  border: none;
+  font-size: 16px;
+  color: #212121;
+  flex: 1;
+  padding: 0 15px;
+}
+
+.taskText:focus {
+  outline: none;
+}
+
+.taskContainer {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F2F2F2;
+  padding: 15px 0;
+}
+
+.remove {
+  visibility: hidden;
+}
+
+.taskContainer:hover .remove {
+  visibility: visible;
+}
+
+.circle {
+  opacity: 0.2;
+}
+
+.taskContainer:hover .circle {
+  opacity: 1;
+}
+
+.circle:hover, .remove:hover, .add:hover {
+  cursor: pointer;
 }

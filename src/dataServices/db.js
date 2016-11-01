@@ -34,12 +34,13 @@ const markAsIncomplete = (id) => {
 }
 
 const edit = (id, text) => {
+  console.log('HELLO', id, text)
   const sql = `
     UPDATE tasks
-    SET text = $2
-    WHERE id = $1
+    SET text=$2
+    WHERE id=$1
   `
-  return db.none = (sql, [id, text])
+  return db.none(sql, [id, text])
 }
 
 const remove = (id) => {
@@ -47,7 +48,7 @@ const remove = (id) => {
     DELETE FROM tasks
     WHERE id = $1
   `
-  return db.none = (sql, [id])
+  return db.none(sql, [id])
 }
 
 const reorder = (id) => {

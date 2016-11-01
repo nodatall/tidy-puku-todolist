@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tasks: null,
+      tasks: [],
     }
     this.loadTasks()
   }
@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   render() {
-    const taskList = this.state.tasks === null ?
+    const taskList = this.state.tasks.length === 0 ?
       <div>Click + to add a task</div> :
       <TaskList tasks={this.state.tasks} />
 

@@ -27,7 +27,7 @@ As a user, I can manipulate tasks in the following ways:
 | /               | get    | getAll()           |
 | /add            | post   | add()              |
 | /complete/:id   | put    | markAsComplete()   |
-| /uncomplete/:id | put    | markAsIncomplete() |
+| /incomplete/:id | put    | markAsIncomplete() |
 | /edit/:id       | put    | edit()             |
 | /delete/:id     | delete | remove()           |
 | /reorder        | put    | reorder()          |

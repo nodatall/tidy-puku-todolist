@@ -42,7 +42,7 @@ const edit = (id, text) => {
   return db.none = (sql, [id, text])
 }
 
-const delete = (id) => {
+const remove = (id) => {
   const sql = `
     DELETE FROM tasks
     WHERE id = $1

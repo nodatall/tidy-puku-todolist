@@ -30,7 +30,8 @@ const markAsIncomplete = (req, res) => {
 }
 
 const edit = (req, res) => {
-  db.edit(req.params.id, req.body.text)
+  console.log('body', req.body, 'id', req.params.id)
+  // db.edit(req.params.id, req.body)
 }
 
 const remove = (req, res) => {

@@ -7,15 +7,24 @@ body {
   width: 90%;
   max-width: 400px;
   min-height: 500px;
-  border: 2px solid #607D8B;
+  border-radius: 5px;
   background-color: #FFFFFF;
-  margin: 0 auto;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 25px 3px #607D8B;
 }
 
 .tasksContainer {
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  padding: 7px 15px;
+}
+
+.taskContainer {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F2F2F2;
+  padding: 15px 0;
 }
 
 .taskText {
@@ -28,13 +37,6 @@ body {
 
 .taskText:focus {
   outline: none;
-}
-
-.taskContainer {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #F2F2F2;
-  padding: 15px 0;
 }
 
 .remove {
@@ -59,4 +61,34 @@ body {
 
 .complete {
   text-decoration: line-through;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+svg {
+  stroke: #697D8B;
+  stroke-width: 3;
+  transition: stroke 0.5s;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+svg:hover {
+  stroke: #324148;
+}
+
+#check {
+  stroke: #009688;
+  stroke-width: 3;
+}
+
+.circle #check {
+  visibility: hidden;
+}
+
+.complete #check {
+  visibility: visible;
 }

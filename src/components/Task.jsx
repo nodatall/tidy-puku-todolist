@@ -61,7 +61,10 @@ class Task extends React.Component {
         <div
           className='circle'
           onClick={this.props.completed ? this.markAsIncomplete.bind(this) : this.markAsComplete.bind(this)}>
-          O
+          <svg width="28" height="28">
+            <circle cx="14" cy="14" r="12" fill="none"/>
+            <path id="check" d="M 6, 15 L 12, 21 L 20, 9" fill="none"/>
+          </svg>
         </div>
         <input
           type='text'
@@ -74,7 +77,10 @@ class Task extends React.Component {
         <div
           className='remove'
           onClick={this.remove.bind(this)}>
-          X
+          <svg width="28" height="28">
+            <line x1="10" y1="10" x2="18" y2="18" />
+            <line x1="18" y1="10" x2="10" y2="18" />
+          </svg>
         </div>
       </div>
     )

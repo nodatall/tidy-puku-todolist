@@ -15,30 +15,44 @@ const getAll = (req, res) => {
 
 const add = (req, res) => {
   db.add()
-    // .then(task => {
-    //   res.status(200).json(task) // cbtt
-    // })
-    // .catch(next) // cbtt
+    .then( () => {
+      res.end()
+    })
 }
 
 const markAsComplete = (req, res) => {
   db.markAsComplete(req.params.id)
+    .then( () => {
+      res.end()
+    })
 }
 
 const markAsIncomplete = (req, res) => {
   db.markAsIncomplete(req.params.id)
+    .then( () => {
+      res.end()
+    })
 }
 
 const edit = (req, res) => {
   db.edit(req.params.id, req.body.text)
+    .then( () => {
+      res.end()
+    })
 }
 
 const remove = (req, res) => {
   db.remove(req.params.id)
+    .then( () => {
+      res.end()
+    })
 }
 
 const reorder = (req, res) => {
   db.reorder(req.params.id)
+    .then( () => {
+      res.end()
+    })
 }
 
 module.exports = {

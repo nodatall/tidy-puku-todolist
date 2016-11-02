@@ -15,9 +15,8 @@ class Task extends React.Component {
   }
 
   update(event) {
-    console.log('Updated', typeof(event.target.value))
     $.ajax({
-      method: 'POST',
+      method: 'PUT',
       url: `/edit/${this.props.taskId}`,
       contentType: "application/json; charset=utf-8",
       dataType: 'json',
@@ -31,12 +30,26 @@ class Task extends React.Component {
     }
   }
 
+  remove(event) {
+    $.ajax({
+      method: 'DELETE',
+      url: `/remove/${this.props.taskId}`
+    }).then(this.props.loadTasks.bind(this))
+  }
+
+  markAsComplete() {
+    $.ajax({
+      method: 'PUT',
+      url: `/complete/${this.props.taskId}`
+    }).then(this.props.loadTasks.bind(this))
+  }
+
   render() {
     return (
       <div className='taskContainer'>
-        <div className='circle'>O</div>
+        <div className='circle' onClick={this.markAsComplete.bind(this)}>O</div>
         <input type='text' className='taskText' key={this.props.taskId} value={this.state.value} onChange={this.handleChange.bind(this)} onBlur={this.update.bind(this)}  onKeyUp={this.updateOnEnter.bind(this)}/>
-        <div className='remove'>X</div>
+        <div className='remove' onClick={this.remove.bind(this)}>X</div>
       </div>
     )
   }

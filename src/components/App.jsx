@@ -27,14 +27,13 @@ class App extends React.Component {
     $.ajax({
       method: 'POST',
       url: '/add',
-    })
-    this.loadTasks()
+    }).then(this.loadTasks.bind(this))
   }
 
   render() {
     const taskList = this.state.tasks.length === 0 ?
       <div>Click + to add a task</div> :
-      <TaskList tasks={this.state.tasks} />
+      <TaskList tasks={this.state.tasks} loadTasks={this.loadTasks.bind(this)} />
 
     return (
       <div className='container'>

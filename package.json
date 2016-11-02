@@ -16,7 +16,7 @@
     "pg": "^6.1.0",
     "pg-promise": "^5.3.5",
     "react": "^15.3.2",
-    "react-addons-css-transition-group": "^15.3.2",
+    "react-css-transition-replace": "^2.0.1",
     "react-dom": "^15.3.2",
     "webpack": "^1.13.3"
   },

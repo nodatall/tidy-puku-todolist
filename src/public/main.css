@@ -107,21 +107,22 @@ svg:hover {
 
 /* React transitions */
 
-.example-enter {
-  opacity: 0;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-  transition-delay: 500ms;
-}
-
-.example-leave {
+.cross-fade-leave {
   opacity: 1;
 }
-
-.example-leave.example-leave-active {
+.cross-fade-leave.cross-fade-leave-active {
   opacity: 0;
-  transition: opacity 500ms ease-in;
+  transition: opacity .2s ease-in;
+}
+
+.cross-fade-enter {
+  opacity: 0;
+}
+.cross-fade-enter.cross-fade-enter-active {
+  opacity: 1;
+  transition: opacity .2s ease-in .3s;
+}
+
+.cross-fade-height {
+  transition: height .3s ease-in-out;
 }

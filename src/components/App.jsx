@@ -14,6 +14,22 @@ class App extends React.Component {
     this.loadTasks()
   }
 
+  order(tasks) {
+    let max = 0, min = Infinity
+    let results = []
+
+    tasks.forEach( task => {
+      if (task.ordering > max) max = task.ordering
+      if (task.ordering < min) min = task.ordering
+    })
+
+    for ( let i = min; i <= max; i++ ) {
+      results.push(tasks.filter( task => task.ordering === i )[0])
+    }
+
+    return results
+  }
+
   loadTasks() {
     $.ajax({
       method: 'GET',
@@ -21,7 +37,7 @@ class App extends React.Component {
       // contentType: 'application/json',
       dataType: 'json',
     }).then(tasks => {
-      this.setState({tasks: tasks})
+      this.setState({tasks: this.order(tasks)})
     })
   }
 

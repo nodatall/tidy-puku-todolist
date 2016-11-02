@@ -8,6 +8,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       tasks: [],
+      showCompletedFlag: false
     }
     this.loadTasks()
   }
@@ -30,14 +31,19 @@ class App extends React.Component {
     }).then(this.loadTasks.bind(this))
   }
 
+  showCompleted() {
+    this.setState({showCompletedFlag: true})
+  }
+
   render() {
     const taskList = this.state.tasks.length === 0 ?
       <div>Click + to add a task</div> :
-      <TaskList tasks={this.state.tasks} loadTasks={this.loadTasks.bind(this)} />
+      <TaskList tasks={this.state.tasks} loadTasks={this.loadTasks.bind(this)} showCompletedFlag={this.state.showCompletedFlag} />
 
     return (
       <div className='container'>
-        <div className='add' onClick={this.addTask.bind(this)}>+</div>
+        <div className='add topButton' onClick={this.addTask.bind(this)}>+</div>
+        <div className='showCompleted topButton' onClick={this.showCompleted.bind(this)}>O</div>
         {taskList}
       </div>
     )

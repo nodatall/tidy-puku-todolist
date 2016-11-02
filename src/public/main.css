@@ -53,6 +53,6 @@ body {
   opacity: 1;
 }
 
-.circle:hover, .remove:hover, .add:hover {
+.circle:hover, .remove:hover, .topButton:hover {
   cursor: pointer;
 }

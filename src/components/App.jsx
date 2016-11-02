@@ -77,8 +77,8 @@ class App extends React.Component {
           {taskList}
         <ReactCSSTransitionGroup
           transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={500}>
         {this.state.showCompletedFlag ? <h1 key='109858'>One</h1> : <h1 key='5445454'>Two</h1>}
         </ReactCSSTransitionGroup>
       </div>

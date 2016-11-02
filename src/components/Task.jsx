@@ -37,19 +37,45 @@ class Task extends React.Component {
     }).then(this.props.loadTasks.bind(this))
   }
 
-  markAsComplete() {
+  markAsComplete(event) {
     $.ajax({
       method: 'PUT',
       url: `/complete/${this.props.taskId}`
     }).then(this.props.loadTasks.bind(this))
   }
 
+  markAsIncomplete(event) {
+    $.ajax({
+      method: 'PUT',
+      url: `/incomplete/${this.props.taskId}`
+    }).then(this.props.loadTasks.bind(this))
+  }
+
+  toggleCompleted() {
+
+  }
+
   render() {
     return (
-      <div className='taskContainer'>
-        <div className='circle' onClick={this.markAsComplete.bind(this)}>O</div>
-        <input type='text' className='taskText' key={this.props.taskId} value={this.state.value} onChange={this.handleChange.bind(this)} onBlur={this.update.bind(this)}  onKeyUp={this.updateOnEnter.bind(this)}/>
-        <div className='remove' onClick={this.remove.bind(this)}>X</div>
+      <div className={this.props.completed ? 'taskContainer complete' : 'taskContainer'}>
+        <div
+          className='circle'
+          onClick={this.props.completed ? this.markAsIncomplete.bind(this) : this.markAsComplete.bind(this)}>
+          O
+        </div>
+        <input
+          type='text'
+          className='taskText'
+          key={this.props.taskId}
+          value={this.state.value}
+          onChange={this.handleChange.bind(this)}
+          onBlur={this.update.bind(this)}
+          onKeyUp={this.updateOnEnter.bind(this)}/>
+        <div
+          className='remove'
+          onClick={this.remove.bind(this)}>
+          X
+        </div>
       </div>
     )
   }

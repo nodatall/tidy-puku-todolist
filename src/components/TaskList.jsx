@@ -7,7 +7,13 @@ class TaskList extends React.Component {
     const filteredTasks = this.props.tasks.filter( task => this.props.showCompletedFlag ? task.completed : !task.completed
     )
     const tasks = filteredTasks.map( (task, index) => {
-      return <Task task={task.text} taskId={task.id} loadTasks={this.props.loadTasks} key={task.id} />
+      return <Task
+                task={task.text}
+                taskId={task.id}
+                loadTasks={this.props.loadTasks}
+                completed={task.completed}
+                key={task.id}
+              />
     })
     return <div className="tasksContainer">{tasks}</div>
   }

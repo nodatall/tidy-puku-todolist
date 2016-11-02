@@ -5,7 +5,7 @@ const taskController = require('./controllers/taskController')
 
 router.post('/add', taskController.add)
 router.put('/complete/:id', taskController.markAsComplete)
-// router.put('/incomplete/:id', taskController.markAsIncomplete)
+router.put('/incomplete/:id', taskController.markAsIncomplete)
 router.put('/edit/:id', taskController.edit)
 // router.put('/reorder', taskController.reorder)
 router.delete('/remove/:id', taskController.remove)

@@ -56,3 +56,7 @@ body {
 .circle:hover, .remove:hover, .topButton:hover {
   cursor: pointer;
 }
+
+.complete {
+  text-decoration: line-through;
+}

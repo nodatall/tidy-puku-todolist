@@ -18,7 +18,7 @@ class App extends React.Component {
     $.ajax({
       method: 'GET',
       url: '/getAll',
-      contentType: 'application/json',
+      // contentType: 'application/json',
       dataType: 'json',
     }).then(tasks => {
       this.setState({tasks: tasks})

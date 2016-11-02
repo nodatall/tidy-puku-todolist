@@ -19,9 +19,8 @@ class Task extends React.Component {
       method: 'PUT',
       url: `/edit/${this.props.taskId}`,
       contentType: "application/json; charset=utf-8",
-      dataType: 'json',
       data: JSON.stringify({text: event.target.value})
-    })
+    }).then(this.props.loadTasks)
   }
 
   updateOnEnter(event) {
@@ -34,21 +33,21 @@ class Task extends React.Component {
     $.ajax({
       method: 'DELETE',
       url: `/remove/${this.props.taskId}`
-    }).then(this.props.loadTasks.bind(this))
+    }).then(this.props.loadTasks)
   }
 
   markAsComplete(event) {
     $.ajax({
       method: 'PUT',
       url: `/complete/${this.props.taskId}`
-    }).then(this.props.loadTasks.bind(this))
+    }).then(this.props.loadTasks)
   }
 
   markAsIncomplete(event) {
     $.ajax({
       method: 'PUT',
       url: `/incomplete/${this.props.taskId}`
-    }).then(this.props.loadTasks.bind(this))
+    }).then(this.props.loadTasks)
   }
 
   toggleCompleted() {

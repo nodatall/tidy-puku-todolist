@@ -34,7 +34,6 @@ const markAsIncomplete = (id) => {
 }
 
 const edit = (id, text) => {
-  console.log('HELLO', id, text)
   const sql = `
     UPDATE tasks
     SET text=$2

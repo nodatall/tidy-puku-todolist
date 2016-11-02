@@ -3,16 +3,16 @@
 ### Specifications
 
 - [X] Create design mockup using Figma
-- [ ] Learn how to setup and use React
-- [ ] Deepen understanding of Express
-- [ ] Postgres database
-- [ ] Responsive design
+- [X] Learn how to setup and use React
+- [X] Deepen understanding of Express
+- [X] Postgres database
+- [X] Responsive design
 
 As a user, I can manipulate tasks in the following ways:
-- [ ] Create
-- [ ] Edit
-- [ ] Delete
-- [ ] Check off as complete
+- [X] Create
+- [X] Edit
+- [X] Delete
+- [X] Check off as complete
 
 #### Stretch goals
 - [ ] Rearrange tasks by dragging

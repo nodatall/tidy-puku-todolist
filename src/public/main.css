@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
 body {
   background-color: #F2F2F2;
   width: 100%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 18px;
+}
+
+input {
+  font-family: 'PT Sans', sans-serif;
 }
 
 .container {
@@ -29,10 +37,10 @@ body {
 
 .taskText {
   border: none;
-  font-size: 16px;
   color: #212121;
   flex: 1;
   padding: 0 15px;
+  font-size:20px;
 }
 
 .taskText:focus {
@@ -41,6 +49,8 @@ body {
 
 .remove {
   visibility: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .taskContainer:hover .remove {
@@ -49,6 +59,8 @@ body {
 
 .circle {
   opacity: 0.2;
+  display: flex;
+  align-items: center;
 }
 
 .taskContainer:hover .circle {
@@ -91,4 +103,24 @@ svg:hover {
 
 .complete #check {
   visibility: visible;
+}
+
+/* React transitions */
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

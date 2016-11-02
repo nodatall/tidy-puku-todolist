@@ -12,7 +12,7 @@ const add = () => {
     INSERT INTO tasks (text)
     VALUES ($1)
   `
-  return db.none(sql, ['default'])
+  return db.none(sql, [''])
 }
 
 const markAsComplete = (id) => {

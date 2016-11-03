@@ -43,6 +43,7 @@ class Task extends React.Component {
   }
 
   markAsComplete(event) {
+    document.getElementById('ding').play()
     $.ajax({
       method: 'PUT',
       url: `/complete/${this.props.taskId}`,

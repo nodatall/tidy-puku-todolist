@@ -18,7 +18,7 @@ class Buttons extends React.Component {
             <line x1="3" y1="14" x2="25" y2="14" />
           </svg>
         </div>
-        <div className='showCompleted topButton complete' onClick={this.props.showCompleted}>
+        <div className='showCompleted topButton' onClick={this.props.showCompleted}>
           <svg width="28" height="28">
             <circle cx="14" cy="14" r="12"/>
             <path id="check" d="M 6, 15 L 12, 21 L 20, 9" fill="none"/>

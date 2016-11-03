@@ -9,6 +9,7 @@ body {
 
 input {
   font-family: 'PT Sans', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .container {
@@ -67,6 +68,22 @@ input {
   opacity: 1;
 }
 
+.tasksContainer .complete input {
+  opacity: 0.5;
+}
+
+.tasksContainer .complete:hover input {
+  opacity: 1;
+}
+
+.tasksContainer .complete input:focus {
+  opacity: 1;
+}
+
+.tasksContainer .complete input:focus ~ .circle {
+  opacity: 1;
+}
+
 .circle:hover, .remove:hover, .topButton:hover {
   cursor: pointer;
 }
@@ -99,6 +116,7 @@ svg {
 
 .buttonContainer circle {
   transition: fill 0.3s;
+  fill: #697D8B;
 }
 
 .buttonContainer svg:hover circle{
@@ -111,7 +129,24 @@ svg {
 }
 
 .complete circle {
-  fill: #697D8B;
+  stroke: #009688;
+  fill: #009688;
+  transition: fill 0.3s, stroke-width 0.3s, stroke 0.3s;
+}
+
+.complete .circle:hover circle {
+  stroke: #697D8B;
+  fill: white;
+  stroke-width: 2;
+}
+
+.complete svg {
+  transition: transform 0.3s;
+  transform: scale(1.1)
+}
+
+.complete .circle:hover svg {
+  transform: scale(0.8);
 }
 
 .incomplete circle {

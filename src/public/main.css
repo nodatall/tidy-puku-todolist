@@ -16,7 +16,7 @@ input {
   max-width: 400px;
   min-height: 500px;
   border-radius: 5px;
-  background-color: #FFFFFF;
+  background-color: white;
   margin: 50px auto;
   padding: 20px;
   box-shadow: 0 0 25px 3px #607D8B;
@@ -78,32 +78,37 @@ input {
 .buttonContainer {
   display: flex;
   justify-content: space-between;
+  padding: 5px;
 }
 
 svg {
-  stroke: #697D8B;
-  stroke-width: 3;
-  transition: stroke 0.5s;
   stroke-linecap: round;
   stroke-linejoin: round;
+  stroke-width: 3;
+  stroke: #697D8B;
 }
 
-svg:hover {
-  stroke: #324148;
+.buttonContainer svg {
+  transition: transform 0.3s, stroke 0.3s;
+}
+
+.buttonContainer svg:hover {
+  transform: scale(1.2);
+  stroke: #212121;
+}
+
+.buttonContainer circle {
+  transition: fill 0.3s;
+}
+
+.buttonContainer svg:hover circle{
+  fill: #212121;
 }
 
 #check {
-  stroke: #FFFFFF;
+  stroke: white;
   stroke-width: 5;
 }
-
-/*.circle #check {
-  visibility: hidden;
-}
-
-.complete #check {
-  visibility: visible;
-}*/
 
 .complete circle {
   fill: #697D8B;
@@ -111,8 +116,9 @@ svg:hover {
 
 .incomplete circle {
   stroke: #697D8B;
-  fill: none;
+  fill: white;
   stroke-width: 2;
+  transition: stroke 0.3s, fill 0.3s;
 }
 
 .incomplete .circle:hover circle {
@@ -127,6 +133,15 @@ svg:hover {
 
 .incomplete .circle:hover {
   transform: scale(1.3);
+}
+
+.remove svg {
+  transition: transform 0.3s, stroke 0.3s;
+}
+
+.remove svg:hover {
+  transform: scale(1.2);
+  stroke: firebrick;
 }
 
 /* React transitions */

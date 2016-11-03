@@ -1,7 +1,9 @@
 import React from 'react'
-import TaskList from './TaskList.jsx'
-import $ from 'jquery'
 import ReactCSSTransitionReplace from 'react-css-transition-replace'
+import $ from 'jquery'
+
+import Buttons from './Buttons.jsx'
+import TaskList from './TaskList.jsx'
 
 class App extends React.Component {
 
@@ -18,10 +20,9 @@ class App extends React.Component {
     $.ajax({
       method: 'GET',
       url: '/getAll',
-      // contentType: 'application/json',
       dataType: 'json',
       error: (err) => {
-        console.log('loadTasks ajax failure', err)
+        console.error('loadTasks ajax failure', err)
       }
     }).then(tasks => {
       this.setState({tasks: tasks})
@@ -33,7 +34,7 @@ class App extends React.Component {
       method: 'POST',
       url: '/add',
       error: (err) => {
-        console.log('addTask ajax failure', err)
+        console.error('addTask ajax failure', err)
       }
     }).then(this.loadTasks.bind(this))
   }
@@ -61,28 +62,12 @@ class App extends React.Component {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500} >
           <div key={`${this.state.showCompletedFlag}1234`}>
-            {this.state.showCompletedFlag ?
-              <div className='back topButton' onClick={this.showIncompleted.bind(this)}>
-                <svg width="28" height="28">
-                  <path d="M 11, 6 L 3, 14 L 11, 22" fill="none"/>
-                  <line x1="4" y1="14" x2="25" y2="14" />
-                </svg>
-              </div> :
-              <div className='buttonContainer'>
-                <div className='add topButton' onClick={this.addTask.bind(this)}>
-                  <svg width="28" height="28">
-                    <line x1="14" y1="3" x2="14" y2="25" />
-                    <line x1="3" y1="14" x2="25" y2="14" />
-                  </svg>
-                </div>
-                <div className='showCompleted topButton' onClick={this.showCompleted.bind(this)}>
-                  <svg width="28" height="28">
-                    <circle cx="14" cy="14" r="12" fill="none"/>
-                    <path id="check" d="M 6, 15 L 12, 21 L 20, 9" fill="none"/>
-                  </svg>
-                </div>
-              </div>
-            }
+            <Buttons
+              showCompletedFlag={this.state.showCompletedFlag}
+              showCompleted={this.showCompleted.bind(this)}
+              showIncompleted={this.showIncompleted.bind(this)}
+              addTask={this.addTask.bind(this)}
+              />
             {taskList}
           </div>
         </ReactCSSTransitionReplace>

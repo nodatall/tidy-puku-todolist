@@ -62,10 +62,6 @@ class Task extends React.Component {
     }).then(this.props.loadTasks)
   }
 
-  toggleCompleted() {
-
-  }
-
   render() {
     return (
       <div className={this.props.completed ? 'taskContainer complete' : 'taskContainer'}>

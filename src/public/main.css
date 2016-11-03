@@ -2,24 +2,22 @@
 
 body {
   background-color: #F2F2F2;
-  width: 100%;
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
 }
 
-input {
-  font-family: 'PT Sans', sans-serif;
-  letter-spacing: 0.5px;
+#mountPoint {
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-  width: 90%;
   max-width: 400px;
   min-height: 500px;
   border-radius: 5px;
   background-color: white;
-  margin: 50px auto;
   padding: 20px;
+  margin: 50px 0;
   box-shadow: 0 0 25px 3px #607D8B;
   display:none;
 }
@@ -38,9 +36,12 @@ input {
 }
 
 .taskText {
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing: 0.5px;
+  min-width:10px;
+  width:100%;
   border: none;
   color: #212121;
-  flex: 1;
   padding: 0 15px;
   font-size:20px;
 }

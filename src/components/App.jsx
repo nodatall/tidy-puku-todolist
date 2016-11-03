@@ -53,13 +53,10 @@ class App extends React.Component {
   }
 
   render() {
-    const taskList = this.state.tasks.length === 0 ?
-      <div>Click + to add a task</div> :
-      <TaskList
+    const taskList = <TaskList
         tasks={this.state.tasks}
         loadTasks={this.loadTasks.bind(this)}
-        showCompletedFlag={this.state.showCompletedFlag}
-      />
+        showCompletedFlag={this.state.showCompletedFlag} />
 
     return (
       <div className='container'>

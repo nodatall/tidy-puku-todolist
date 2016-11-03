@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Task from './Task.jsx'
 
 class TaskList extends React.Component {
@@ -15,7 +16,14 @@ class TaskList extends React.Component {
                 key={task.id}
               />
     })
-    return <div className="tasksContainer">{tasks}</div>
+    return <div className="tasksContainer">
+      <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={300}>
+          {tasks}
+      </ReactCSSTransitionGroup>
+    </div>
   }
 }
 

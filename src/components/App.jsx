@@ -57,7 +57,8 @@ class App extends React.Component {
       <div>Click + to add a task</div> :
       <TaskList
         tasks={this.state.tasks}
-        loadTasks={this.loadTasks.bind(this)} showCompletedFlag={this.state.showCompletedFlag}
+        loadTasks={this.loadTasks.bind(this)}
+        showCompletedFlag={this.state.showCompletedFlag}
       />
 
     return (
@@ -66,13 +67,13 @@ class App extends React.Component {
           transitionName="cross-fade"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500} >
-          <div key={`${this.state.showCompletedFlag}1234`}>
+          <div key={`${this.state.showCompletedFlag}Complete`}>
             <Buttons
               showCompletedFlag={this.state.showCompletedFlag}
               showCompleted={this.showCompleted.bind(this)}
               showIncompleted={this.showIncompleted.bind(this)}
               addTask={this.addTask.bind(this)}
-              />
+            />
             {taskList}
           </div>
         </ReactCSSTransitionReplace>

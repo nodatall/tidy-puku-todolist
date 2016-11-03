@@ -64,7 +64,7 @@ class Task extends React.Component {
 
   render() {
     return (
-      <div className={this.props.completed ? 'taskContainer complete' : 'taskContainer'}>
+      <div className={this.props.completed ? 'taskContainer complete' : 'taskContainer incomplete'}>
         <div
           className='circle'
           onClick={this.props.completed ? this.markAsIncomplete.bind(this) : this.markAsComplete.bind(this)}>

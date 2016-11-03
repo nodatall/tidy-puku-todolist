@@ -69,7 +69,7 @@ input {
 }
 
 .tasksContainer .complete input {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .tasksContainer .complete:hover input {

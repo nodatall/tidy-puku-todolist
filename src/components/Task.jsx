@@ -76,6 +76,7 @@ class Task extends React.Component {
         <input
           type='text'
           className='taskText'
+          id={'task' + this.props.taskId}
           key={this.props.taskId}
           value={this.state.value}
           onChange={this.handleChange.bind(this)}

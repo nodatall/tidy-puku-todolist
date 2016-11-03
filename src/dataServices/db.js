@@ -11,8 +11,9 @@ const add = () => {
   const sql = `
     INSERT INTO tasks (text)
     VALUES ($1)
+    RETURNING id
   `
-  return db.none(sql, [''])
+  return db.one(sql, [''])
 }
 
 const markAsComplete = (id) => {

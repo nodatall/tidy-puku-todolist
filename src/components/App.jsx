@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   loadTasks() {
-    $.ajax({
+    return $.ajax({
       method: 'GET',
       url: '/getAll',
       dataType: 'json',
@@ -33,10 +33,15 @@ class App extends React.Component {
     $.ajax({
       method: 'POST',
       url: '/add',
+      dataType: 'json',
       error: (err) => {
         console.error('addTask ajax failure', err)
       }
-    }).then(this.loadTasks.bind(this))
+    }).then(result => {
+      this.loadTasks.bind(this)().then( () => {
+        document.getElementById('task' + result.id).focus()
+      })
+    })
   }
 
   showCompleted() {

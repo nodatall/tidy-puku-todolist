@@ -16,8 +16,8 @@ const getAll = (req, res, next) => {
 
 const add = (req, res, next) => {
   db.add()
-    .then( () => {
-      res.end()
+    .then( taskId => {
+      res.json(taskId)
     })
     .catch(next)
 }

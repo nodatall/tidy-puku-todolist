@@ -43,7 +43,7 @@ class Task extends React.Component {
   }
 
   markAsComplete(event) {
-    document.getElementById('ding').play()
+    document.getElementById('ping').play()
     $.ajax({
       method: 'PUT',
       url: `/complete/${this.props.taskId}`,
@@ -54,6 +54,7 @@ class Task extends React.Component {
   }
 
   markAsIncomplete(event) {
+    document.getElementById('reversePing').play()
     $.ajax({
       method: 'PUT',
       url: `/incomplete/${this.props.taskId}`,

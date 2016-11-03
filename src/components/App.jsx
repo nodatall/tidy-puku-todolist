@@ -14,30 +14,17 @@ class App extends React.Component {
     this.loadTasks()
   }
 
-  order(tasks) {
-    let max = 0, min = Infinity
-    let results = []
-
-    tasks.forEach( task => {
-      if (task.ordering > max) max = task.ordering
-      if (task.ordering < min) min = task.ordering
-    })
-
-    for ( let i = min; i <= max; i++ ) {
-      results.push(tasks.filter( task => task.ordering === i )[0])
-    }
-
-    return results
-  }
-
   loadTasks() {
     $.ajax({
       method: 'GET',
       url: '/getAll',
       // contentType: 'application/json',
       dataType: 'json',
+      error: (err) => {
+        console.log('loadTasks ajax failure', err)
+      }
     }).then(tasks => {
-      this.setState({tasks: this.order(tasks)})
+      this.setState({tasks: tasks})
     })
   }
 
@@ -45,6 +32,9 @@ class App extends React.Component {
     $.ajax({
       method: 'POST',
       url: '/add',
+      error: (err) => {
+        console.log('addTask ajax failure', err)
+      }
     }).then(this.loadTasks.bind(this))
   }
 

@@ -19,7 +19,10 @@ class Task extends React.Component {
       method: 'PUT',
       url: `/edit/${this.props.taskId}`,
       contentType: "application/json; charset=utf-8",
-      data: JSON.stringify({text: event.target.value})
+      data: JSON.stringify({text: event.target.value}),
+      error: (err) => {
+        console.error('update ajax failure', err)
+      }
     }).then(this.props.loadTasks)
   }
 
@@ -32,21 +35,30 @@ class Task extends React.Component {
   remove(event) {
     $.ajax({
       method: 'DELETE',
-      url: `/remove/${this.props.taskId}`
+      url: `/remove/${this.props.taskId}`,
+      error: (err) => {
+        console.error('remove ajax failure', err)
+      }
     }).then(this.props.loadTasks)
   }
 
   markAsComplete(event) {
     $.ajax({
       method: 'PUT',
-      url: `/complete/${this.props.taskId}`
+      url: `/complete/${this.props.taskId}`,
+      error: (err) => {
+        console.error('markAsComplete ajax failure', err)
+      }
     }).then(this.props.loadTasks)
   }
 
   markAsIncomplete(event) {
     $.ajax({
       method: 'PUT',
-      url: `/incomplete/${this.props.taskId}`
+      url: `/incomplete/${this.props.taskId}`,
+      error: (err) => {
+        console.error('markAsIncomplete ajax failure', err)
+      }
     }).then(this.props.loadTasks)
   }
 

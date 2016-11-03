@@ -3,7 +3,7 @@ const connectionString = 'postgres://localhost:5432/taskDatabase'
 const db = pgp(connectionString)
 
 const getAll = () => {
-  const sql = `SELECT * FROM tasks`
+  const sql = `SELECT * FROM tasks ORDER BY ordering ASC`
   return db.any(sql)
 }
 

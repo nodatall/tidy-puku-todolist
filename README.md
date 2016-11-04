@@ -15,7 +15,7 @@ As a user, I can manipulate tasks in the following ways:
 - [X] Check off as complete
 
 #### Stretch goals
-- [ ] Rearrange tasks by dragging
+- [X] Rearrange tasks by dragging
 - [ ] Deploy to Heroku
 
 #### Design mockup

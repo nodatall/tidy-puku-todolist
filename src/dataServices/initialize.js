@@ -10,8 +10,8 @@ const sql = `CREATE TABLE IF NOT EXISTS tasks (
 )`
 
 db.none(sql).then( () => {
-  console.log( 'Beginning DB query' )
-  return db.none('INSERT INTO tasks (text) VALUES ($1)', ['this is a text'])
+  // console.log( 'Beginning DB query' )
+  // return db.none('INSERT INTO tasks (text) VALUES ($1)', ['this is a text'])
 })
 .then( () => console.log( 'Done with db query' ))
 .then( () => process.exit() )

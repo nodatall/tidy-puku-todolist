@@ -40,8 +40,9 @@ body {
   pointer-events: none;
 }
 
-.over {
-  border: 2px solid red;
+.over, .over input {
+  background: #F2F2F2;
+  box-shadow: 0 0 3px 3px #f2f2f2;
 }
 
 .taskText {
@@ -188,7 +189,7 @@ svg {
 }
 
 .remove svg:hover {
-  transform: scale(1.2);
+  transform: scale(1.3);
   stroke: firebrick;
 }
 

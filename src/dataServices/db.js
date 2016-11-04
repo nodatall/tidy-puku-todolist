@@ -71,16 +71,12 @@ const setOrdering = (id, ordering) => {
 const reorder = (id1, id2) => {
   let ordering1, ordering2
   return Promise.all([
-    getOrdering(id1)
-    .then( (result) => {
-      ordering1 = result.ordering
-    }),
+    getOrdering(id1),
     getOrdering(id2)
-    .then( (result) => {
-      ordering2 = result.ordering
-    })
   ])
-  .then( () => {
+  .then( results => {
+    ordering1 = results[0].ordering
+    ordering2 = results[1].ordering
     setOrdering(id1, 0)
     setOrdering(id2, ordering1)
     setOrdering(id1, ordering2)

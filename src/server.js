@@ -4,10 +4,10 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-app.use(bodyParser.json())
-
 app.use(express.static('src/public'))
 app.use(express.static('dist'))
+app.use(bodyParser.json())
+
 
 app.use(routes)
 
@@ -20,6 +20,6 @@ app.use(function(err, req, res, next) {
   res.status(500).send('Something broke!');
 })
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Listening on port 3000')
 })

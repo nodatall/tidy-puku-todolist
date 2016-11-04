@@ -6,7 +6,8 @@ class Task extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: this.props.task
+      value: this.props.task,
+      dragOver: false
     }
   }
 
@@ -64,9 +65,46 @@ class Task extends React.Component {
     }).then(this.props.loadTasks)
   }
 
+  dragStartHandler(event) {
+    this.props.setDragging(true)
+  }
+
+  dragEndHandler(event) {
+    this.props.setDragging(false)
+  }
+
+  dropHandler(event) {
+    // console.log('dropHadler event', event)
+    this.setState({dragOver: false})
+  }
+
+  dragOverHandler(event) {
+    event.preventDefault()
+    // console.log('clientx,y', event.clientX, event.clientY)
+  }
+
+  dragEnterHandler(event) {
+    this.setState({dragOver: true})
+  }
+
+  dragLeaveHandler(event) {
+    this.setState({dragOver: false})
+  }
+
   render() {
     return (
-      <div className={this.props.completed ? 'taskContainer complete' : 'taskContainer incomplete'}>
+      <div
+        className={(this.props.completed ? 'taskContainer complete' : 'taskContainer incomplete')
+          + (this.state.dragOver ? ' over' : '')
+          + (this.props.dragging ? ' dragging' : '')}
+        draggable='true'
+        onDrop={this.dropHandler.bind(this)}
+        onDragOver={this.dragOverHandler.bind(this)}
+        onDragStart={this.dragStartHandler.bind(this)}
+        onDragEnd={this.dragEndHandler.bind(this)}
+        onDragEnter={this.dragEnterHandler.bind(this)}
+        onDragLeave={this.dragLeaveHandler.bind(this)}
+      >
         <div
           className='circle'
           onClick={this.props.completed ? this.markAsIncomplete.bind(this) : this.markAsComplete.bind(this)}>

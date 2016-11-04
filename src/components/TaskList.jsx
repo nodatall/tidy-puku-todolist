@@ -4,6 +4,17 @@ import Task from './Task.jsx'
 
 class TaskList extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      dragging: false
+    }
+  }
+
+  setDragging(dragging) {
+    this.setState({dragging: dragging})
+  }
+
   render() {
     const filteredTasks = this.props.tasks.filter( task => this.props.showCompletedFlag ? task.completed : !task.completed
     )
@@ -14,6 +25,8 @@ class TaskList extends React.Component {
                 loadTasks={this.props.loadTasks}
                 completed={task.completed}
                 key={task.id}
+                dragging={this.state.dragging}
+                setDragging={this.setDragging.bind(this)}
               />
     })
     return <div className="tasksContainer">

@@ -36,6 +36,14 @@ body {
   padding: 15px 0;
 }
 
+.dragging > * {
+  pointer-events: none;
+}
+
+.over {
+  border: 2px solid red;
+}
+
 .taskText {
   font-family: 'PT Sans', sans-serif;
   letter-spacing: 0.5px;

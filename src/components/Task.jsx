@@ -67,7 +67,9 @@ class Task extends React.Component {
   }
 
   dragStartHandler(event) {
+    event.target.blur()
     this.props.setDragging(true)
+    event.dataTransfer.effectAllowed = 'move'
   }
 
   dragEndHandler(event) {

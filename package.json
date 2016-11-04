@@ -31,9 +31,9 @@
   },
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
-    "start": "node src/dataServices/initialize.js & nodemon src/server.js",
+    "start": "node src/dataServices/initialize.js & node src/server.js",
     "webpack": "webpack --progress --colors --watch",
-    "buildwatch": "yarn run clean && yarn run webpack & yarn run start",
+    "buildwatch": "yarn run clean && yarn run webpack & nodemon src/server.js",
     "initialize": "createdb taskDatabase & node src/dataServices/initialize.js"
   },
   "engines": {

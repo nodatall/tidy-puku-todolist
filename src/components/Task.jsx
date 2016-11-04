@@ -6,12 +6,13 @@ class Task extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: this.props.task
+      taskText: this.props.taskText,
+      dragOver: false
     }
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value })
+    this.setState({taskText: event.target.value })
   }
 
   update(event) {
@@ -44,7 +45,7 @@ class Task extends React.Component {
   }
 
   markAsComplete(event) {
-    document.getElementById('ping').play()
+    this.playSound(true)
     $.ajax({
       method: 'PUT',
       url: `/complete/${this.props.taskId}`,
@@ -54,8 +55,13 @@ class Task extends React.Component {
     }).then(this.props.loadTasks)
   }
 
+  playSound(forward) {
+    const sound = forward ? document.getElementById('ping') : document.getElementById('reversePing')
+    sound.cloneNode().play()
+  }
+
   markAsIncomplete(event) {
-    document.getElementById('reversePing').play()
+    this.playSound(false)
     $.ajax({
       method: 'PUT',
       url: `/incomplete/${this.props.taskId}`,
@@ -65,9 +71,63 @@ class Task extends React.Component {
     }).then(this.props.loadTasks)
   }
 
+  dragStartHandler(event) {
+    event.target.blur()
+    this.props.setDragging(true)
+    event.dataTransfer.effectAllowed = 'move'
+    event.dataTransfer.setData('text/plain', this.props.taskId)
+  }
+
+  dragEndHandler(event) {
+    this.props.setDragging(false)
+  }
+
+  dropHandler(event) {
+    const draggedTaskId = event.dataTransfer.getData('text')
+    this.setState({dragOver: false})
+
+    if (!this.props.reordering) {
+      this.props.setReordering(true)
+      $.ajax({
+        method: 'PUT',
+        url: `/reorder/${this.props.taskId}/${draggedTaskId}`,
+        error: (err) => {
+          console.error('reorder ajax failure', err)
+        }
+      })
+      .then( () => {
+        this.props.loadTasks()
+        this.props.setReordering(false)
+      })
+    }
+  }
+
+  dragOverHandler(event) {
+    event.preventDefault()
+  }
+
+  dragEnterHandler(event) {
+    this.setState({dragOver: true})
+  }
+
+  dragLeaveHandler(event) {
+    this.setState({dragOver: false})
+  }
+
   render() {
     return (
-      <div className={this.props.completed ? 'taskContainer complete' : 'taskContainer incomplete'}>
+      <div
+        className={(this.props.completed ? 'taskContainer complete' : 'taskContainer incomplete')
+          + (this.state.dragOver ? ' over' : '')
+          + (this.props.dragging ? ' dragging' : '')}
+        draggable='true'
+        onDrop={this.dropHandler.bind(this)}
+        onDragOver={this.dragOverHandler.bind(this)}
+        onDragStart={this.dragStartHandler.bind(this)}
+        onDragEnd={this.dragEndHandler.bind(this)}
+        onDragEnter={this.dragEnterHandler.bind(this)}
+        onDragLeave={this.dragLeaveHandler.bind(this)}
+      >
         <div
           className='circle'
           onClick={this.props.completed ? this.markAsIncomplete.bind(this) : this.markAsComplete.bind(this)}>
@@ -81,7 +141,7 @@ class Task extends React.Component {
           className='taskText'
           id={'task' + this.props.taskId}
           key={this.props.taskId}
-          value={this.state.value}
+          value={this.state.taskText}
           onChange={this.handleChange.bind(this)}
           onBlur={this.update.bind(this)}
           onKeyUp={this.keyUpHandler.bind(this)}/>

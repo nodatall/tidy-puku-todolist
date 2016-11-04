@@ -37,8 +37,8 @@ const markAsIncomplete = (id) => {
 const edit = (id, text) => {
   const sql = `
     UPDATE tasks
-    SET text=$2
-    WHERE id=$1
+    SET text = $2
+    WHERE id = $1
   `
   return db.none(sql, [id, text])
 }
@@ -51,8 +51,40 @@ const remove = (id) => {
   return db.none(sql, [id])
 }
 
-const reorder = (id) => {
+const getOrdering = id => {
+  const sql = `
+    SELECT ordering FROM tasks
+    WHERE id = $1
+  `
+  return db.one(sql, [id])
+}
 
+const setOrdering = (id, ordering) => {
+  const sql = `
+    UPDATE tasks
+    SET ordering = $2
+    WHERE id = $1
+  `
+  return db.none(sql, [id, ordering])
+}
+
+const reorder = (id1, id2) => {
+  let ordering1, ordering2
+  return Promise.all([
+    getOrdering(id1),
+    getOrdering(id2)
+  ])
+  .then( results => {
+    ordering1 = results[0].ordering
+    ordering2 = results[1].ordering
+    setOrdering(id1, 0)
+  })
+  .then( () => {
+    setOrdering(id2, ordering1)
+  })
+  .then( () => {
+    setOrdering(id1, ordering2)
+  })
 }
 
 module.exports = {

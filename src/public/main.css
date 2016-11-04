@@ -36,6 +36,15 @@ body {
   padding: 15px 0;
 }
 
+.dragging > * {
+  pointer-events: none;
+}
+
+.over, .over input {
+  background: #F2F2F2;
+  box-shadow: 0 0 3px 3px #f2f2f2;
+}
+
 .taskText {
   font-family: 'PT Sans', sans-serif;
   letter-spacing: 0.5px;
@@ -180,7 +189,7 @@ svg {
 }
 
 .remove svg:hover {
-  transform: scale(1.2);
+  transform: scale(1.3);
   stroke: firebrick;
 }
 
@@ -197,6 +206,7 @@ svg {
 .cross-fade-enter {
   opacity: 0;
 }
+
 .cross-fade-enter.cross-fade-enter-active {
   opacity: 1;
   transition: opacity .2s ease-in .3s;

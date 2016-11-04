@@ -16,7 +16,10 @@ As a user, I can manipulate tasks in the following ways:
 
 #### Stretch goals
 - [X] Rearrange tasks by dragging
-- [ ] Deploy to Heroku
+- [X] Deploy to Heroku
+
+#### Link to live Heroku app
+[Heroku app](https://shielded-river-27328.herokuapp.com/)
 
 #### Design mockup
 ![Design mockup](./design/todoMockup.png)

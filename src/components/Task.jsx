@@ -45,7 +45,7 @@ class Task extends React.Component {
   }
 
   markAsComplete(event) {
-    document.getElementById('ping').play()
+    this.playSound(true)
     $.ajax({
       method: 'PUT',
       url: `/complete/${this.props.taskId}`,
@@ -55,8 +55,13 @@ class Task extends React.Component {
     }).then(this.props.loadTasks)
   }
 
+  playSound(forward) {
+    const sound = forward ? document.getElementById('ping') : document.getElementById('reversePing')
+    sound.cloneNode().play()
+  }
+
   markAsIncomplete(event) {
-    document.getElementById('reversePing').play()
+    this.playSound(false)
     $.ajax({
       method: 'PUT',
       url: `/incomplete/${this.props.taskId}`,

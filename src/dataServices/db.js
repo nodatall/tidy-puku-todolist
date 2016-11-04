@@ -78,7 +78,11 @@ const reorder = (id1, id2) => {
     ordering1 = results[0].ordering
     ordering2 = results[1].ordering
     setOrdering(id1, 0)
+  })
+  .then( () => {
     setOrdering(id2, ordering1)
+  })
+  .then( () => {
     setOrdering(id1, ordering2)
   })
 }

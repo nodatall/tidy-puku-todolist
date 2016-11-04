@@ -80,13 +80,21 @@ class Task extends React.Component {
   dropHandler(event) {
     const draggedTaskId = event.dataTransfer.getData('text')
     this.setState({dragOver: false})
-    $.ajax({
-      method: 'PUT',
-      url: `/reorder/${this.props.taskId}/${draggedTaskId}`,
-      error: (err) => {
-        console.error('reorder ajax failure', err)
-      }
-    }).then(this.props.loadTasks)
+
+    if (!this.props.reordering) {
+      this.props.setReordering(true)
+      $.ajax({
+        method: 'PUT',
+        url: `/reorder/${this.props.taskId}/${draggedTaskId}`,
+        error: (err) => {
+          console.error('reorder ajax failure', err)
+        }
+      })
+      .then( () => {
+        this.props.loadTasks()
+        this.props.setReordering(false)
+      })
+    }
   }
 
   dragOverHandler(event) {

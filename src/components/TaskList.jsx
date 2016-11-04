@@ -7,12 +7,17 @@ class TaskList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dragging: false
+      dragging: false,
+      reordering: false
     }
   }
 
   setDragging(dragging) {
     this.setState({dragging: dragging})
+  }
+
+  setReordering(reordering) {
+    this.setState({reordering: reordering})
   }
 
   render() {
@@ -27,7 +32,9 @@ class TaskList extends React.Component {
                 key={task.id}
                 addTask={this.props.addTask}
                 dragging={this.state.dragging}
+                reordering={this.state.reordering}
                 setDragging={this.setDragging.bind(this)}
+                setReordering={this.setReordering.bind(this)}
               />
     })
     return <div className="tasksContainer">

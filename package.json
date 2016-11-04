@@ -35,5 +35,8 @@
     "webpack": "webpack --progress --colors --watch",
     "buildwatch": "yarn run clean && yarn run webpack & yarn run start",
     "initialize": "createdb taskDatabase & node src/dataServices/initialize.js"
+  },
+  "engines": {
+    "node": "6.7.0"
   }
 }

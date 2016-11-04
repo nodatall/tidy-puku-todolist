@@ -206,6 +206,7 @@ svg {
 .cross-fade-enter {
   opacity: 0;
 }
+
 .cross-fade-enter.cross-fade-enter-active {
   opacity: 1;
   transition: opacity .2s ease-in .3s;

@@ -55,7 +55,7 @@ const remove = (req, res, next) => {
 }
 
 const reorder = (req, res, next) => {
-  db.reorder(req.params.id)
+  db.reorder(req.params.id1, req.params.id2)
     .then( () => {
       res.end()
     })

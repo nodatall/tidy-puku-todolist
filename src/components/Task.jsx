@@ -6,13 +6,13 @@ class Task extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: this.props.task,
+      taskText: this.props.taskText,
       dragOver: false
     }
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value })
+    this.setState({taskText: event.target.value })
   }
 
   update(event) {
@@ -70,6 +70,7 @@ class Task extends React.Component {
     event.target.blur()
     this.props.setDragging(true)
     event.dataTransfer.effectAllowed = 'move'
+    event.dataTransfer.setData('text/plain', this.props.taskId)
   }
 
   dragEndHandler(event) {
@@ -77,13 +78,19 @@ class Task extends React.Component {
   }
 
   dropHandler(event) {
-    // console.log('dropHadler event', event)
+    const draggedTaskId = event.dataTransfer.getData('text')
     this.setState({dragOver: false})
+    $.ajax({
+      method: 'PUT',
+      url: `/reorder/${this.props.taskId}/${draggedTaskId}`,
+      error: (err) => {
+        console.error('reorder ajax failure', err)
+      }
+    }).then(this.props.loadTasks)
   }
 
   dragOverHandler(event) {
     event.preventDefault()
-    // console.log('clientx,y', event.clientX, event.clientY)
   }
 
   dragEnterHandler(event) {
@@ -121,7 +128,7 @@ class Task extends React.Component {
           className='taskText'
           id={'task' + this.props.taskId}
           key={this.props.taskId}
-          value={this.state.value}
+          value={this.state.taskText}
           onChange={this.handleChange.bind(this)}
           onBlur={this.update.bind(this)}
           onKeyUp={this.keyUpHandler.bind(this)}/>

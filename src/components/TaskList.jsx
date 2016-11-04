@@ -20,7 +20,7 @@ class TaskList extends React.Component {
     )
     const tasks = filteredTasks.map( (task, index) => {
       return <Task
-                task={task.text}
+                taskText={task.text}
                 taskId={task.id}
                 loadTasks={this.props.loadTasks}
                 completed={task.completed}

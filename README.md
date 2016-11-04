@@ -22,12 +22,12 @@ As a user, I can manipulate tasks in the following ways:
 ![Design mockup](./design/todoMockup.png)
 
 #### Routes
-| Path            | Method | Action             |
-| --------------- | ------ | ------------------ |
-| /               | get    | getAll()           |
-| /add            | post   | add()              |
-| /complete/:id   | put    | markAsComplete()   |
-| /incomplete/:id | put    | markAsIncomplete() |
-| /edit/:id       | put    | edit()             |
-| /delete/:id     | delete | remove()           |
-| /reorder        | put    | reorder()          |
+| Path               | Method | Action             |
+| ------------------ | ------ | ------------------ |
+| /                  | get    | getAll()           |
+| /add               | post   | add()              |
+| /complete/:id      | put    | markAsComplete()   |
+| /incomplete/:id    | put    | markAsIncomplete() |
+| /edit/:id          | put    | edit()             |
+| /delete/:id        | delete | remove()           |
+| /reorder/:id1/:id2 | put    | reorder()          |

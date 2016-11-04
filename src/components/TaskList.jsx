@@ -14,6 +14,7 @@ class TaskList extends React.Component {
                 loadTasks={this.props.loadTasks}
                 completed={task.completed}
                 key={task.id}
+                addTask={this.props.addTask}
               />
     })
     return <div className="tasksContainer">

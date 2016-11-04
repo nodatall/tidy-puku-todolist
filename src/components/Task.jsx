@@ -26,9 +26,10 @@ class Task extends React.Component {
     }).then(this.props.loadTasks)
   }
 
-  updateOnEnter(event) {
+  keyUpHandler(event) {
     if (event.keyCode === 13) {
       event.target.blur()
+      this.props.addTask()
     }
   }
 
@@ -83,7 +84,7 @@ class Task extends React.Component {
           value={this.state.value}
           onChange={this.handleChange.bind(this)}
           onBlur={this.update.bind(this)}
-          onKeyUp={this.updateOnEnter.bind(this)}/>
+          onKeyUp={this.keyUpHandler.bind(this)}/>
         <div
           className='remove'
           onClick={this.remove.bind(this)}>

@@ -52,19 +52,21 @@ body {
 }
 
 .remove {
-  visibility: hidden;
+  opacity: 0;
   display: flex;
   align-items: center;
+  transition: opacity 0.3s;
 }
 
 .taskContainer:hover .remove {
-  visibility: visible;
+  opacity: 1;
 }
 
 .circle {
   opacity: 0.2;
   display: flex;
   align-items: center;
+  transition: opacity 0.3s;
 }
 
 .taskContainer:hover .circle {
@@ -165,7 +167,7 @@ svg {
 }
 
 .incomplete .circle {
-  transition: transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
   transform: scale(0.8);
 }
 

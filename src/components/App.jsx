@@ -56,7 +56,8 @@ class App extends React.Component {
     const taskList = <TaskList
         tasks={this.state.tasks}
         loadTasks={this.loadTasks.bind(this)}
-        showCompletedFlag={this.state.showCompletedFlag} />
+        showCompletedFlag={this.state.showCompletedFlag}
+        addTask={this.addTask.bind(this)} />
 
     return (
       <div className='container'>
